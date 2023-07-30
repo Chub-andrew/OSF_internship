@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
+<body>
+    <h2>To Do List</h2>
+    <form method="post" action="/add_task">
+        <label>
+            Title:
+            <input type="text" name="title">
+        </label>
+        <label>
+            Description:
+            <input type="text" name="description">
+        </label>
+        <button type="submit">Add task</button>
+    </form>
+
+    <h5>Tasks list</h5>
+
+    {% for task in tasks %}
+    <div>
+        {{ task.title }}&nbsp;<b>{{ task.description }}</b>
+        <form method="post" action="{{ url_for('update_task', task_id=task.id) }}" style="display: inline-block;">
+            <button type="submit">Update</button>
+        </form>
+        <form method="post" action="{{ url_for('delete_task', task_id=task.id) }}" style="display: inline-block;">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Task</title>
+</head>
+<body>
+    <h2>Update Task</h2>
+    <form method="post" action="{{ url_for('update_task', task_id=task.id) }}">
+        <label>
+            Title:
+            <input type="text" name="title" value="{{ task.title }}">
+        </label>
+        <br>
+        <label>
+            Description:
+            <input type="text" name="description" value="{{ task.description }}">
+        </label>
+        <br>
+        <button type="submit">Update</button>
+        <a href="{{ url_for('main') }}">Cancel</a>
+    </form>
+</body>
+</html>
